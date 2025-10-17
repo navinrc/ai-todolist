@@ -143,6 +143,13 @@ function TodoItem({ todo, toggleTodo, deleteTodo, updateTodo }) {
 	)
 }
 
+/**
+ * Root Todo application component that manages todo list state, new-item input (text and priority), and UI theme, and renders the form, controls, and animated list of todos.
+ *
+ * The component uses the useTodos hook for todo operations (add, toggle, update, delete), keeps local state for the new-task text and priority, and synchronizes the document's data-theme attribute with the selected theme. Submitting the form adds a new todo when input is non-empty.
+ *
+ * @returns {JSX.Element} A React element representing the Todo application UI.
+ */
 export default function App() {
 	const { todos, addTodo, toggleTodo, deleteTodo, updateTodo } = useTodos()
 	const [text, setText] = useState('')
