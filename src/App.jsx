@@ -143,6 +143,16 @@ function TodoItem({ todo, toggleTodo, deleteTodo, updateTodo }) {
 	)
 }
 
+/**
+ * Root application component that manages todo state, the add-todo form, and UI theme.
+ *
+ * Applies the current theme to the document root via the `data-theme` attribute and renders
+ * the form to create todos, the priority selector, theme toggle, and the animated list of todos.
+ * Uses the `useTodos` hook for todo state and exposes controls for adding, toggling, updating,
+ * and deleting todos.
+ *
+ * @returns {JSX.Element} The application UI.
+ */
 export default function App() {
 	const { todos, addTodo, toggleTodo, deleteTodo, updateTodo } = useTodos()
 	const [text, setText] = useState('')
