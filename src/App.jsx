@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const priorities = [
@@ -147,6 +147,11 @@ export default function App() {
 	const { todos, addTodo, toggleTodo, deleteTodo, updateTodo } = useTodos()
 	const [text, setText] = useState('')
 	const [priority, setPriority] = useState('medium')
+	const [theme, setTheme] = useState('dark')
+
+	useEffect(() => {
+		document.documentElement.setAttribute('data-theme', theme)
+	}, [theme])
 
 	const canAdd = useMemo(() => text.trim().length > 0, [text])
 
@@ -161,6 +166,16 @@ export default function App() {
 	return (
 		<div className="container">
 			<div className="card">
+				<div className="header" style={{ marginBottom: 12 }}>
+					<div style={{ flex: 1 }} />
+					<button
+						className="button small"
+						type="button"
+						onClick={() => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))}
+					>
+						{theme === 'dark' ? 'Light mode' : 'Dark mode'}
+					</button>
+				</div>
 				<form className="header" onSubmit={submit}>
 					<input
 						className="input"
