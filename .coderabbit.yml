@@ -1,0 +1,46 @@
+# CodeRabbit configuration for automated PR reviews
+reviews:
+  enabled: true
+  auto_review:
+    enabled: true
+    on:
+      - pull_request
+  summary:
+    enabled: true
+    include_code_suggestions: true
+  suggestions:
+    enabled: true
+    limit: 30
+    filters:
+      paths_ignore:
+        - node_modules/**
+        - dist/**
+        - package-lock.json
+        - vite.config.js
+        - '*.md'
+  labels:
+    enabled: true
+    approved: "automerge: approved"
+    changes_requested: "review: changes-requested"
+    attention: "review: needs-attention"
+policies:
+  code_quality:
+    enforce: true
+  security:
+    enforce: true
+  performance:
+    enforce: true
+  accessibility:
+    enforce: true
+  tests:
+    enforce: false
+languages:
+  - javascript
+  - typescript
+  - jsx
+  - tsx
+  - css
+notifications:
+  pr_comment:
+    enabled: true
+    mode: summary
